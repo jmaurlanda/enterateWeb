@@ -1,0 +1,7 @@
+{
+  "/rsu_upload_files-0.0.1-SNAPSHOT/*": {
+    "target": "http://smartdev.uniajc.edu.co:8888",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

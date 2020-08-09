@@ -1,0 +1,73 @@
+.mat-card-title {
+  padding: 2% 0% 1% 0%;
+}
+
+.mat-card {
+  width: 60%;
+  margin-bottom: 2%;
+}
+
+.mat-card:hover {
+  -webkit-box-shadow: 0px 0px 30px -8px rgba(0,108,210,1);
+  -moz-box-shadow: 0px 0px 30px -8px rgba(0,108,210,1);
+  box-shadow: 0px 0px 30px -8px rgba(0,108,210,1);
+}
+
+.divMainCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.divMain {
+
+}
+
+.NotFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.txtContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-right: 4%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.mat-card-title {
+  font-family: 'Raleway Medium' !important;
+}
+
+.mat-card-subtitle {
+  font-family: 'Raleway Medium' !important;
+}
+
+.clsButtons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+  justify-content: space-between;
+  padding-left:8%;
+  padding-right:2%;
+}
+
+.clsBtnRechazar {
+  font-family: 'Raleway Medium' !important;
+  color: lightgrey !important;
+  font-size: 18px;
+}
+
+.clsBtnAceptar {
+  font-family: 'Raleway Medium' !important;
+  color: #006CD2 !important;
+  font-size: 18px;
+}

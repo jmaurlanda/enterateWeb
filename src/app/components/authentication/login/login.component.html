@@ -1,0 +1,108 @@
+<div class="main-div">
+  <div class="divCointainerMain">
+
+    <div style="width:100%;margin-bottom:10%;">
+      <img src="assets/logo-enterate.png" width="90%">
+    </div>
+
+    <div class="container" style="margin-bottom:10%;">
+      <div class="logoContainer">
+        <img src="assets/logo-camacho-gris.png" width="40px">
+      </div>
+      <div class="txtContainer">
+        <p class="clsTxtLogoBienvenido">{{txtBienvenido}}</p>
+        <p class="clsTxtLogoUniCamacho">{{txtUniajc}}</p>
+      </div>
+    </div>
+
+
+    <form [formGroup]="LoginForm" *ngIf="blValidate && blRecovery">
+
+      <mat-form-field class="example-form-field" style="width:100%;">
+        <span matPrefix style="margin-right:5%;"><img src="assets/icono-usuario.png" width="25px"></span>
+        <input matInput type="text" formControlName="userName" id="userName" name="userName" required placeholder="{{txtUser}}">
+        <button mat-button *ngIf="this.LoginForm.value.userName" matSuffix mat-icon-button aria-label="Clear" (click)="this.LoginForm.controls['userName'].setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div *ngIf="this.LoginForm.controls['userName'].invalid && (this.LoginForm.controls['userName'].dirty || this.LoginForm.controls['userName'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="this.LoginForm.controls['userName'].errors.required || this.LoginForm.controls['userName'].status">
+          {{validateUserName}}
+        </div>
+      </div>
+
+      <br>
+
+      <button mat-raised-button class="SmartButtonAzul" style="width:100%; margin-top:10%;" (click)="onSubmit()">{{buttonLogin}}</button>
+
+    </form>
+
+    <form [formGroup]="LoginForm" *ngIf="!blValidate && blRecovery">
+
+      <mat-form-field class="example-form-field" style="width:100%;">
+        <span matPrefix style="margin-right:5%;"><img src="assets/icono-password.png" width="25px"></span>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" id="password" name="password" placeholder="{{txtPassword}}">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div *ngIf="this.LoginForm.controls['password'].invalid && (this.LoginForm.controls['password'].dirty || this.LoginForm.controls['password'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="this.LoginForm.controls['password'].errors.required || this.LoginForm.controls['password'].status">
+          {{validatePassword}}
+        </div>
+      </div>
+
+      <br>
+      <div class="buttonsAuthenticate">
+        <button mat-raised-button class="SmartButtonWhite" style="width:40%; margin-top:10%;margin-right:5%;" (click)="onReturn()">{{buttonCancel}}</button>
+        <button mat-raised-button class="SmartButtonAzul" style="width:40%; margin-top:10%;" (click)="onSubmitAuthenticate()">{{buttonPassword}}</button>
+      </div>
+
+      <br />
+      <div class="divRecovery">
+        <a href="javascript:" (click)="showRecovery()">{{txtRecovery}}</a>
+      </div>
+
+    </form>
+
+    <form [formGroup]="LoginForm" *ngIf="!blRecovery">
+
+      <mat-form-field class="example-form-field" style="width:100%;">
+        <span matPrefix style="margin-right:5%;"><img src="assets/icono-usuario.png" width="25px"></span>
+        <input matInput type="text" formControlName="userNameRecovery" id="userNameRecovery" name="userNameRecovery" required placeholder="usuario">
+        <button mat-button *ngIf="this.LoginForm.value.userNameRecovery" matSuffix mat-icon-button aria-label="Clear" (click)="this.LoginForm.controls['userNameRecovery'].setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div *ngIf="this.LoginForm.controls['userNameRecovery'].invalid && (this.LoginForm.controls['userNameRecovery'].dirty || this.LoginForm.controls['userNameRecovery'].touched)"
+           class="alert alert-danger">
+        <div *ngIf="this.LoginForm.controls['userNameRecovery'].errors.required || this.LoginForm.controls['userNameRecovery'].status">
+          {{validateUserName}}
+        </div>
+      </div>
+
+      <br>
+
+      <button mat-raised-button class="SmartButtonAzul" style="width:100%; margin-top:10%;" (click)="onRecoveryPassword()">{{buttonRecovery}}</button>
+
+      <div class="divRecovery" style="padding-top:4%;">
+        <a href="javascript:" (click)="onReturn()">{{txtCancelRecovery}}</a>
+      </div>
+
+    </form>
+
+    <div class="overlay" *ngIf="blSpinner">
+      <div class="center">
+        <mat-spinner diameter="70"></mat-spinner>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

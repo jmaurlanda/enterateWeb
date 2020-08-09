@@ -1,0 +1,179 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url(./assets/background.png);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.mat-grid-tile {
+  position: static !important;
+}
+
+.mat-grid-list {
+ 
+}
+
+.btnMenu {
+  margin-top: 10% !important;
+  padding: 10% !important;
+}
+.btnMenuExit {
+  color: white;
+}
+
+.btnExit {
+  width: 3%;
+  text-align: end;
+}
+
+.mainAppComponent {
+}
+
+.menuLateral {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+  width: 30%;
+}
+
+.contentMain {
+  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+  height: 500px;
+  width: 70%;
+}
+
+.mainSide {
+  display: flex;
+  background-color: transparent !important;
+  justify-content: center;
+}
+
+.mat-figure {
+  top: 0 !important;
+  padding-top: 10% !important;
+  max-height: 60% !important;
+}
+
+.contentApp {
+  background-color: transparent !important;
+  flex-direction: column !important;
+  width: 96%;
+  margin-top: 0%;
+  max-height: 200px !important;
+}
+
+.page-footerLogin {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 60px;
+}
+
+.page-footer {
+  bottom: 0;
+  width: 100%;
+  line-height: 60px;
+}
+
+.headerLogin {
+  background-color: #006CD2 !important;
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.headerBodyLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+input {
+  font-family: 'Raleway', sans-serif !important;
+  color: #C6C6C6;
+  font-size: 20px !important;
+}
+
+.SmartButtonAzul {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 19px !important;
+  color: #FFFFFF !important;
+  background-color: #006CD2 !important;
+  border-style: solid !important;
+  border-radius: 20px !important;
+  border-color: #006CD2 !important;
+}
+
+.SmartButtonWhite {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 19px !important;
+  color: #006CD2 !important;
+  background-color: transparent !important;
+  border-style: solid !important;
+  border-radius: 20px !important;
+  border-color: #006CD2 !important;
+}
+
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #006CD2 !important;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.06);
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.mat-card-title {
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.mat-card-subtitle {
+  font-family: 'Raleway', sans-serif !important;
+}
+
+.imgSmartCampus {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

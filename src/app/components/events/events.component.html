@@ -1,0 +1,28 @@
+<div class="divMain">
+  <div *ngIf="notFound" class="NotFound">
+    <p>{{txtNotFound}}</p>
+  </div>
+
+  <div *ngFor="let item of dataSource" class="divMainCard">
+    <mat-card ng-mouseover="'background-color': 'red'grid.appScope.onRowHover(this);">
+      <div>
+        <img src="{{item.image}}" class="md-user-avatar" width="388px" height="242" />
+      </div>
+      <div mat-card-title>{{item.name}}</div>
+      <p mat-card-subtitle>{{item.description}}</p>
+    </mat-card>
+  </div>
+
+
+  <div class="overlay" *ngIf="blSpinner">
+    <div class="center">
+      <mat-spinner diameter="70"></mat-spinner>
+    </div>
+  </div>
+
+</div>
+  <div class="contenedor" *ngIf="blAdmin">
+    <button class="botonF1" (click)="openCreateDialog()">
+      <span>+</span>
+    </button>
+  </div>

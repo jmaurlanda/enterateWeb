@@ -1,0 +1,172 @@
+<div class="divTitle">
+  <p class="title" mat-dialog-title>{{txtTitle}}</p>
+</div>
+
+<div>
+
+  <form [formGroup]="createForm">
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgName}}" class="imgIcon"></span>
+      <input matInput type="text" formControlName="name" id="name" name="name" #name maxlength="100" required placeholder="{{txtName}}">
+      <mat-hint align="end">{{name.value.length}} / 100</mat-hint>
+    </mat-form-field>
+    <div *ngIf="this.createForm.controls['name'].invalid && (this.createForm.controls['name'].dirty || this.createForm.controls['name'].touched)"
+         class="alert alert-danger">
+      <div *ngIf="this.createForm.controls['name'].errors.required || this.createForm.controls['name'].status">
+        {{txtValidateName}}
+      </div>
+    </div>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgDescription}}" class="imgIcon"></span>
+      <textarea matInput type="text" rows="3" formControlName="description" #description maxlength="1000" id="description" name="description" required placeholder="{{txtDescription}}"></textarea>
+      <mat-hint align="end">{{description.value.length}} / 1000</mat-hint>
+    </mat-form-field>
+    <div *ngIf="this.createForm.controls['description'].invalid && (this.createForm.controls['description'].dirty || this.createForm.controls['description'].touched)"
+         class="alert alert-danger">
+      <div *ngIf="this.createForm.controls['description'].errors.required || this.createForm.controls['description'].status">
+        {{txtValidateDescription}}
+      </div>
+    </div>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgDate}}" class="imgIcon"></span>
+      <input matInput type="text" formControlName="fechaStart" id="fechaStart" name="fechaStart" [matDatepicker]="fechaStart" disabled required placeholder="{{txtDate}}">
+      <mat-datepicker-toggle matSuffix [for]="fechaStart"></mat-datepicker-toggle>
+      <mat-datepicker #fechaStart disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <div *ngIf="this.createForm.controls['fechaStart'].invalid && (this.createForm.controls['fechaStart'].dirty || this.createForm.controls['fechaStart'].touched)"
+         class="alert alert-danger">
+      <div *ngIf="this.createForm.controls['fechaStart'].errors.required || this.createForm.controls['fechaStart'].status">
+        {{txtValidateDate}}
+      </div>
+    </div>
+    <br />
+
+    <div class="dviHour">
+
+      <mat-form-field class="example-form-field" style="margin-right:2%;">
+        <span matPrefix><img src="{{txtImgHStart}}" class="imgIcon"></span>
+        <input matInput type="time" formControlName="hourStart" id="hourStart" name="hourStart" required placeholder="{{txtHStart}}">
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <span matPrefix><img src="{{txtImgHEnd}}" class="imgIcon"></span>
+        <input matInput type="time" formControlName="hourEnd" id="hourEnd" name="hourEnd" required placeholder="{{txtHEnd}}">
+      </mat-form-field>
+
+    </div>
+    <div *ngIf="this.createForm.controls['hourStart'].invalid && (this.createForm.controls['hourStart'].dirty || this.createForm.controls['hourStart'].touched)"
+         class="alert alert-danger">
+      <div *ngIf="this.createForm.controls['hourStart'].errors.required || this.createForm.controls['hourStart'].status">
+        {{txtValidateHStart}}
+      </div>
+    </div>
+    <div *ngIf="this.createForm.controls['hourEnd'].invalid && (this.createForm.controls['hourEnd'].dirty || this.createForm.controls['hourEnd'].touched)"
+         class="alert alert-danger">
+      <div *ngIf="this.createForm.controls['hourEnd'].errors.required || this.createForm.controls['hourEnd'].status">
+        {{txtValidateHEnd}}
+      </div>
+    </div>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgCategory}}" class="imgIcon"></span>
+      <mat-select formControlName="category" id="category" name="category" required placeholder="{{txtCategory}}">
+        <mat-option *ngFor="let cate of categories" [value]="cate.id">
+          {{cate.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="this.createForm.controls['category'].invalid && (this.createForm.controls['category'].dirty || this.createForm.controls['category'].touched)"
+         class="alert alert-danger">
+      <div *ngIf="this.createForm.controls['category'].errors.required || this.createForm.controls['category'].status">
+        {{txtValidateCategory}}
+      </div>
+    </div>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgEstatement}}" class="imgIcon"></span>
+      <mat-select formControlName="estatement" id="estatement" name="estatement" placeholder="{{txtEstatement}}">
+        <mat-option *ngFor="let esta of estatements" [value]="esta.id">
+          {{esta.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgLocation}}" class="imgIcon"></span>
+      <mat-select formControlName="location" id="location" name="location" placeholder="{{txtLocation}}">
+        <mat-option *ngFor="let camp of campus" [value]="camp.id">
+          {{camp.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgAsist}}" class="imgIcon"></span>
+      <input matInput type="text" formControlName="cantUsers" id="cantUsers" name="cantUsers" maxlength="4" #cantUsers required placeholder="{{txtAsist}}">
+      <mat-hint align="end">{{cantUsers.value.length}} / 4</mat-hint>
+    </mat-form-field>
+    <div *ngIf="this.createForm.controls['cantUsers'].invalid && (this.createForm.controls['cantUsers'].dirty || this.createForm.controls['cantUsers'].touched)"
+         class="alert alert-danger">
+      <div *ngIf="this.createForm.controls['cantUsers'].errors.required || this.createForm.controls['cantUsers'].status">
+        {{txtValidateAsist}}
+      </div>
+    </div>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgIMG}}" class="imgIcon" (click)="fileIMG.click()"></span>
+      <input matInput type="text" required placeholder="{{txtIMG}}" (click)="fileIMG.click()" readonly formControlName="img" id="img" name="img">
+    </mat-form-field>
+    <input hidden (change)="onFileSelected()" #fileIMG type="file" id="fileIMG">
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgJornaly}}" class="imgIcon"></span>
+      <mat-select formControlName="jornaly" id="jornaly" name="jornaly" placeholder="{{txtJornaly}}">
+        <mat-option *ngFor="let jorn of jornalies" [value]="jorn.id">
+          {{jorn.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgFaculty}}" class="imgIcon"></span>
+      <mat-select formControlName="faculty" id="faculty" name="faculty" placeholder="{{txtFaculty}}" (selectionChange)="getProgram($event.value)">
+        <mat-option *ngFor="let facult of faculties" [value]="facult.id">
+          {{facult.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+
+    <mat-form-field class="example-form-field" style="width:100%;">
+      <span matPrefix><img src="{{txtImgProgram}}" class="imgIcon"></span>
+      <mat-select formControlName="program" id="program" name="program" placeholder="{{txtProgram}}">
+        <mat-option *ngFor="let progr of programs" [value]="progr.id">
+          {{progr.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+
+    <div class="containerButton">
+      <button mat-raised-button class="SmartButtonAzul" style="width:100%; margin-top:10%;" (click)="createEvent()">{{buttonCreate}}</button>
+    </div>
+  </form>
+
+    <div class="overlay" *ngIf="blSpinnerModal">
+      <div class="center">
+        <mat-spinner diameter="70"></mat-spinner>
+      </div>
+    </div>
+  </div>

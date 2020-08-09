@@ -1,0 +1,60 @@
+<div class="mainAppComponent">
+  <mat-grid-list cols="4" rowHeight="100px">
+
+    <mat-grid-tile [colspan]="4"
+                   [rowspan]="1">
+      <mat-toolbar class="headerLogin">
+        <mat-toolbar-row class="headerBodyLogin">
+          <span class="example-spacer"></span>
+          <img src="assets/logoCamacho.png" width="9%">
+          <span class="example-spacer"></span>
+          <button *ngIf="blMenu" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="exit()">
+            <mat-icon>login</mat-icon>
+          </button>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="4" class="gridContent">
+      <div class="contentApp" *ngIf="!blMenu">
+        <div class="row">
+          <router-outlet></router-outlet>
+          <footer class="page-footer font-small blue column footer">
+            <div class="md-hue-2 md-toolbar">
+              <div class="md-toolbar-tools">
+                <div class="imgSmartCampus">
+                  <img src="assets/logo-smart-campus.png" width="12%">
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <div class="contentApp" *ngIf="blMenu">
+
+        <div class="mainSide row" *ngIf="blMenu">
+          <div class="menuLateral container column">
+            <img src="assets/logo-enterate.png" width="40%">
+            <a mat-button [routerLink]="'/events'" class="btnMenu"> <img src="assets/eventos.png" width="100%"> </a>
+            <a *ngIf="blAdmin" mat-button [routerLink]="'/requests'" class="btnMenu"> <img src="assets/peticiones.png" width="100%"></a>
+            <a mat-button [routerLink]="'/statistics'" class="btnMenu"> <img src="assets/estadisticas.png" width="100%"> </a>
+          </div>
+          <div class="contentMain rout container">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+
+        <footer class="page-footer font-small blue column footer">
+          <div class="md-hue-2 md-toolbar">
+            <div class="md-toolbar-tools">
+              <div class="imgSmartCampus">
+                <img src="assets/logo-smart-campus.png" width="12%">
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>

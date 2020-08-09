@@ -1,0 +1,137 @@
+<div class="divMain">
+  <form [formGroup]="searchForm" class="clsForm">
+    <div class="dateStatistics">
+      <mat-form-field class="example-form-field">
+        <span matPrefix><img src="{{txtImgDate}}" class="imgIcon"></span>
+        <input matInput type="text" formControlName="fechaStart" id="fechaStart" name="fechaStart" [matDatepicker]="fechaStart" disabled placeholder="{{txtDate}}">
+        <mat-datepicker-toggle matSuffix [for]="fechaStart"></mat-datepicker-toggle>
+        <mat-datepicker #fechaStart disabled="false"></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <span matPrefix><img src="{{txtImgDate}}" class="imgIcon"></span>
+        <input matInput type="text" formControlName="fechaEnd" id="fechaEnd" name="fechaEnd" [matDatepicker]="fechaEnd" disabled placeholder="{{txtDateEnd}}">
+        <mat-datepicker-toggle matSuffix [for]="fechaEnd"></mat-datepicker-toggle>
+        <mat-datepicker #fechaEnd disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <br />
+    </div>
+    <div class="dateStatistics">
+      <mat-form-field class="example-form-field clsSelect">
+        <span matPrefix><img src="{{txtImgCategory}}" class="imgIcon"></span>
+        <mat-select formControlName="category" id="category" name="category" placeholder="{{txtCategory}}">
+          <mat-option *ngFor="let cate of categories" [value]="cate.id">
+            {{cate.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field clsSelect">
+        <span matPrefix><img src="{{txtImgEstatement}}" class="imgIcon"></span>
+        <mat-select formControlName="estatement" id="estatement" name="estatement" placeholder="{{txtEstatement}}">
+          <mat-option *ngFor="let esta of estatements" [value]="esta.id">
+            {{esta.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field clsSelect">
+        <span matPrefix><img src="{{txtImgLocation}}" class="imgIcon"></span>
+        <mat-select formControlName="location" id="location" name="location" placeholder="{{txtLocation}}">
+          <mat-option *ngFor="let camp of campus" [value]="camp.id">
+            {{camp.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="dateStatistics">
+      <mat-form-field class="example-form-field clsSelect">
+        <span matPrefix><img src="{{txtImgJornaly}}" class="imgIcon"></span>
+        <mat-select formControlName="jornaly" id="jornaly" name="jornaly" placeholder="{{txtJornaly}}">
+          <mat-option *ngFor="let jorn of jornalies" [value]="jorn.id">
+            {{jorn.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field clsSelect">
+        <span matPrefix><img src="{{txtImgFaculty}}" class="imgIcon"></span>
+        <mat-select formControlName="faculty" id="faculty" name="faculty" placeholder="{{txtFaculty}}" (selectionChange)="getProgram($event.value)">
+          <mat-option *ngFor="let facult of faculties" [value]="facult.id">
+            {{facult.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field clsSelect">
+        <span matPrefix><img src="{{txtImgProgram}}" class="imgIcon"></span>
+        <mat-select formControlName="program" id="program" name="program" placeholder="{{txtProgram}}">
+          <mat-option *ngFor="let progr of programs" [value]="progr.id">
+            {{progr.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+      <div class="containerButton">
+        <button mat-raised-button class="clearFilter SmartButtonWhite" (click)="ngClearFilter()">{{buttonClear}}</button>
+        <button mat-raised-button class="SmartButtonAzul" style="width:30%;" (click)="search()">{{buttonSearch}}</button>
+        <button mat-raised-button class="downloadXLS clearFilter SmartButtonWhite" (click)="ngGetAllData()">{{buttonDownload}}</button>
+      </div>
+      <br />
+
+  </form>
+
+  <div class="overlay" *ngIf="blSpinnerModal">
+    <div class="center">
+      <mat-spinner diameter="70"></mat-spinner>
+    </div>
+  </div>
+</div>
+<div class="divMain">
+  <div class="divGrap">
+    <div class="card container">
+      <canvas id="satisfactionLevel">{{ chartSatisfaction }}</canvas>
+      <div class="card-content">
+        <h3>{{Title_Satisfaction}}</h3>
+        <p>{{Description_Satisfaction}}</p>
+      </div>
+    </div>
+
+    <div class="card container">
+      <canvas id="cantEvents">{{ chartCantEvents }}</canvas>
+      <div class="card-content">
+        <h3>{{Title_CantEvents}}</h3>
+        <p>{{Description_CantEvents}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divGrap">
+    <div class="card container">
+      <canvas id="allAssis">{{ chartCantAssis }}</canvas>
+      <div class="card-content">
+        <h3>{{Title_CantAssis}}</h3>
+        <p>{{Description_CantAssis}}</p>
+      </div>
+    </div>
+
+    <div class="card container">
+      <canvas id="allGender">{{ chartAllGender }}</canvas>
+      <div class="card-content">
+        <h3>{{Title_AllGender}}</h3>
+        <p>{{Description_AllGender}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divGrap">
+    <div class="card container">
+      <canvas id="allAge">{{ chartAge }}</canvas>
+      <div class="card-content">
+        <h3>{{Title_Age}}</h3>
+        <p>{{Description_Age}}</p>
+      </div>
+    </div>
+  </div>
+</div>
