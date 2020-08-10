@@ -491,7 +491,7 @@ export class StatisticsComponent implements OnInit {
 
     if (response["result"]) {
       let data = response["data"];
-      
+     
       let oldColors = [];
 
       let datas = [
