@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: raleway medium;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway Medium'),local('Raleway-Medium'),url(https://allfont.ru/cache/fonts/raleway-medium_f93e5acd6b1a4a6eef84b551db6f21ba.woff) format('woff'),url(https://allfont.ru/cache/fonts/raleway-medium_f93e5acd6b1a4a6eef84b551db6f21ba.ttf) format('truetype')
+}
+
 html, body { height: 100%; }
 body {
   margin: 0;
