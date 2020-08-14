@@ -147,34 +147,41 @@ export class CreateEventComponent implements OnInit {
     
     let jsonFile = JSON.parse(responseFile);
     
-    if (jsonFile.codigo == 200 && jsonFile.codigo != 200) {
-      let urlImagen = jsonFile.valor.fileDownloadUri;
+    if (jsonFile.codigo != undefined) {
+      if (jsonFile.codigo == 200) {
 
-      //Llenamos los datos del evento
-      this.event.name = this.createForm.controls["name"].value;
-      this.event.description = this.createForm.controls['description'].value;
-      this.event.date = this.createForm.controls['fechaStart'].value;
-      this.event.hourStart = this.createForm.controls['hourStart'].value;
-      this.event.hourEnd = this.createForm.controls['hourEnd'].value;
-      this.event.categoryId = this.createForm.controls['category'].value;
-      this.event.capacity = this.createForm.controls['cantUsers'].value;
-      this.event.stateId = 1;
-      this.event.estamentId = this.createForm.controls['estatement'].value;
-      this.event.campusId = this.createForm.controls['location'].value;
-      this.event.image = urlImagen;
-      this.event.facultyId = this.createForm.controls['faculty'].value;
-      this.event.programId = this.createForm.controls['program'].value;
-      this.event.jornalyId = this.createForm.controls['jornaly'].value;
-      this.event.userAdmId = this._cacheService.load("userId");
-      
-      const response = await this._createEventService.createEvent(this.event);
+        let urlImagen = jsonFile.valor.fileDownloadUri;
 
-      if (response["result"]) {
-        this.openDialog(response["msg"], "Correcto");
-        this.dialogRef.close();
-      }
-      else {
-        this.openDialog(response["msg"], "Advertencia");
+        //Llenamos los datos del evento
+        this.event.name = this.createForm.controls["name"].value;
+        this.event.description = this.createForm.controls['description'].value;
+        this.event.date = this.createForm.controls['fechaStart'].value;
+        this.event.hourStart = this.createForm.controls['hourStart'].value;
+        this.event.hourEnd = this.createForm.controls['hourEnd'].value;
+        this.event.categoryId = this.createForm.controls['category'].value;
+        this.event.capacity = this.createForm.controls['cantUsers'].value;
+        this.event.stateId = 1;
+        this.event.estamentId = this.createForm.controls['estatement'].value;
+        this.event.campusId = this.createForm.controls['location'].value;
+        this.event.image = urlImagen;
+        this.event.facultyId = this.createForm.controls['faculty'].value;
+        this.event.programId = this.createForm.controls['program'].value;
+        this.event.jornalyId = this.createForm.controls['jornaly'].value;
+        this.event.userAdmId = this._cacheService.load("userId");
+
+        const response = await this._createEventService.createEvent(this.event);
+
+        if (response["result"]) {
+          this.openDialog(response["msg"], "Correcto");
+          this.dialogRef.close();
+        }
+        else {
+          this.openDialog(response["msg"], "Advertencia");
+        }
+
+      } else {
+        this.openDialog(Constants.FILE_MSG_ERROR, "Error");
+        console.log(jsonFile);
       }
 
     } else {
