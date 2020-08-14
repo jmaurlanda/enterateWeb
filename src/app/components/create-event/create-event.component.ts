@@ -146,7 +146,8 @@ export class CreateEventComponent implements OnInit {
     const responseFile = await this._createEventService.loadFile(this.reader, this.createForm.controls["name"].value);
     
     let jsonFile = JSON.parse(responseFile);
-    if (jsonFile.codigo == 200) {
+    
+    if (jsonFile.codigo == 200 && jsonFile.codigo != 200) {
       let urlImagen = jsonFile.valor.fileDownloadUri;
 
       //Llenamos los datos del evento
